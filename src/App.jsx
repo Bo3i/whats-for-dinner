@@ -6,6 +6,7 @@ import RecipeCard from './recipe-card'
 
 
 function App() {
+  const [response, setResponse] = useState(null);
   const [inputValue, setInputValue] = useState('');
   const [selectedMeal, setSelectedMeal] = useState('');
   const [selectedTime, setSelectedTime] = useState('');
@@ -14,12 +15,13 @@ function App() {
   return (
     <div>
         <h1>What's for dinner?</h1>
-        <SearchBar inputValue = {inputValue} setInputValue = {setInputValue} selectedMeal = {selectedMeal} setSelectedMeal = {setSelectedMeal} selectedTime = {selectedTime} setSelectedTime = {setSelectedTime} selectedType = {selectedType} setSelectedType = {setSelectedType}  />
+        <SearchBar inputValue = {inputValue} setInputValue = {setInputValue} selectedMeal = {selectedMeal} setSelectedMeal = {setSelectedMeal} selectedTime = {selectedTime} setSelectedTime = {setSelectedTime} selectedType = {selectedType} setSelectedType = {setSelectedType} setResponse={setResponse}  />
         <ul>
           <li>inputValue: {inputValue}</li>
           <li>selectedMeal: {selectedMeal}</li>
           <li>selectedTime: {selectedTime}</li>
           <li>selectedType: {selectedType}</li>
+          <li>response: {response}</li>
         </ul>
         <RecipeCard />
     </div>
