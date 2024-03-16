@@ -13,12 +13,25 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
 }
+.ingredients{
+  text-align: center;
+}
+input[type="text"] {
+  margin-right: 1em;
+  font-size: 1em;
+  padding: 0.6em 1em;
+  border-radius: 8px;
+  border: 1px solid #646cff;
+  transition: border-color 0.25s;
+}
 .col{
   display: flex;
   flex-direction: column;
   padding: 0 1em;
 }
 .row{
+  margin-top: 30px;
+  padding: 0 1em;
   justify-content: space-between;
   display: flex;
   flex-direction: row;

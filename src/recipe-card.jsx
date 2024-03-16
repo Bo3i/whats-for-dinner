@@ -3,7 +3,7 @@ function RecipeCard({searchResults}) {
         <div>
             <h2>Recipe Title</h2>
             <p>Time to Cook</p>
-            <ul>
+            <ul className="ingredients">
             <li>Ingredient 1</li>
             <li>Ingredient 2</li>
             <li>Ingredient 3</li>
