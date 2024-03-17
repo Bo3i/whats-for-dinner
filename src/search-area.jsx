@@ -1,60 +1,67 @@
 import React, { useState, useEffect } from 'react';
+import { render } from 'react-dom';
 import './App.css';
 import axios from 'axios';
 
 
 function SearchBar({ inputValue, setInputValue, selectedMeal, setSelectedMeal, selectedTime, setSelectedTime, selectedType, setSelectedType, setResponse}) {
     
+    
+    const [clicked, setClicked] = useState(false);
     const handleClick = () => {
-        console.log('Button clicked!');
-        console.log('Input value:', inputValue);
-        console.log('Selected meal:', selectedMeal);
-        console.log('Selected time:', selectedTime);
-        console.log('Selected type:', selectedType);
-        useEffect(() => {
-            const fetchData = async () => {
-                const options = {
-                    method: 'GET',
-                    url: 'https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/complexSearch',
-                    params: {
-                        query: inputValue,
-                        diet: selectedType,
-                        type: selectedMeal,
-                        instructionsRequired: 'true',
-                        fillIngredients: 'false',
-                        addRecipeInformation: 'false',
-                        maxReadyTime: selectedTime,
-                        ignorePantry: 'true',
-                        sort: 'calories',
-                        sortDirection: 'asc',
-                        offset: '0',
-                        number: '10',
-                        limitLicense: 'false',
-                        ranking: '2'
-                    },
-                    headers: {
-                        'X-RapidAPI-Key': '4cd243d0e8msh19038a6b43a043dp154e08jsndcf6fd04ef1e',
-                        'X-RapidAPI-Host': 'spoonacular-recipe-food-nutrition-v1.p.rapidapi.com'
-                    }
-                    };
-            
-                    try {
-                        const response = await axios.request(options);
-                        console.log(response.data);
-                    } catch (error) {
-                        console.error(error);
-                    }
-            };
-            setResponse = fetchData();
-        }
-        );
+        setClicked(true);
     };
+    
+    useEffect(() => {
+        
+        if (!clicked) return;
+        console.log('clicked', clicked);
+        const fetchData = async () => {
+            const options = {
+                method: 'GET',
+                url: 'https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/complexSearch',
+                params: {
+                    query: inputValue || 'chicken',
+                    type: selectedMeal || 'main course',
+                    instructionsRequired: 'true',
+                    fillIngredients: 'false',
+                    addRecipeInformation: 'false',
+                    maxReadyTime: selectedTime || '60',
+                    ignorePantry: 'true',
+                    sort: 'random',
+                    sortDirection: 'asc',
+                    offset: '0',
+                    number: '1',
+                    limitLicense: 'false',
+                    ranking: '2'
+                },
+                headers: {
+                    'X-RapidAPI-Key': '4cd243d0e8msh19038a6b43a043dp154e08jsndcf6fd04ef1e',
+                    'X-RapidAPI-Host': 'spoonacular-recipe-food-nutrition-v1.p.rapidapi.com'
+                }
+                };
+                
+                console.log('options');
 
+                try {
+                    console.log('fetching data');
+                    const response = await axios.request(options);
+                    setResponse(response.data);
+                    console.log(response.data);
+                    console.log('response');
+                } catch (error) {
+                    console.error(error);
+            }
+  
+        };
+        fetchData();
+    }, [clicked]
+    );
     
 
     return (
       <form>
-      <input type="text" value={inputValue} onChange={e => setInputValue(e.target.value)} placeholder="Search..." />
+      <input type="text" value={inputValue} onChange={e => setInputValue(e.target.value)} placeholder="Main ingredient..." />
       <button type="submit" onClick={handleClick}>Search</button>
         <div className="row">
             <div className="col">
@@ -73,14 +80,7 @@ function SearchBar({ inputValue, setInputValue, selectedMeal, setSelectedMeal, s
                     <li><input type="radio" name="time"  value="120" onChange={e => setSelectedTime(e.target.value)}  /> 2h and longer</li>
                 </ul>
             </div>
-            <div className="col">
-                <p>Meal types</p>
-                 <ul>
-                    <li><input type="radio" name="type"  value="vegetarian" onChange={e => setSelectedType(e.target.value)}  /> Vegetarian</li>
-                    <li><input type="radio" name="type"  value="vegan" onChange={e => setSelectedType(e.target.value)}  /> Vegan</li>
-                    <li><input type="radio" name="type"  value="" onChange={e => setSelectedType(e.target.value)}  /> Normal :)</li>
-                </ul>
-            </div>
+           
         </div>
         <ul>
             
