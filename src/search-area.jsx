@@ -4,9 +4,11 @@ import './App.css';
 import axios from 'axios';
 
 
-function SearchBar({ inputValue, setInputValue, selectedMeal, setSelectedMeal, selectedTime, setSelectedTime, selectedType, setSelectedType, setResponse}) {
+function SearchBar({setResponse}) {
     
-    
+    const [inputValue, setInputValue] = useState('');
+    const [selectedMeal, setSelectedMeal] = useState('');
+    const [selectedTime, setSelectedTime] = useState('');
     const [clicked, setClicked] = useState(false);
     const handleClick = () => {
         setClicked(true);
@@ -38,21 +40,18 @@ function SearchBar({ inputValue, setInputValue, selectedMeal, setSelectedMeal, s
                 headers: {
                     'X-RapidAPI-Key': '4cd243d0e8msh19038a6b43a043dp154e08jsndcf6fd04ef1e',
                     'X-RapidAPI-Host': 'spoonacular-recipe-food-nutrition-v1.p.rapidapi.com'
-                }
+                  }
                 };
                 
-                console.log('options');
 
                 try {
                     console.log('fetching data');
                     const response = await axios.request(options);
                     setResponse(response.data);
                     console.log(response.data);
-                    console.log('response');
                 } catch (error) {
                     console.error(error);
             }
-  
         };
         fetchData();
     }, [clicked]
