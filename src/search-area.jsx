@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import { render } from 'react-dom';
+import React, { useRef, useState, useEffect } from 'react';
 import './App.css';
 import axios from 'axios';
 
@@ -10,14 +9,16 @@ function SearchBar({setResponse}) {
     const [selectedMeal, setSelectedMeal] = useState('');
     const [selectedTime, setSelectedTime] = useState('');
     const [clicked, setClicked] = useState(false);
+
     const handleClick = () => {
         setClicked(true);
     };
-    
+    const firstUpdate = useRef(true);
     useEffect(() => {
-        
-        if (!clicked) return;
-        console.log('clicked', clicked);
+        if (firstUpdate.current) {
+            firstUpdate.current = false;
+            return;
+        }
         const fetchData = async () => {
             const options = {
                 method: 'GET',
@@ -26,8 +27,8 @@ function SearchBar({setResponse}) {
                     query: inputValue || 'chicken',
                     type: selectedMeal || 'main course',
                     instructionsRequired: 'true',
-                    fillIngredients: 'false',
-                    addRecipeInformation: 'false',
+                    fillIngredients: 'true',
+                    addRecipeInformation: 'true',
                     maxReadyTime: selectedTime || '60',
                     ignorePantry: 'true',
                     sort: 'random',

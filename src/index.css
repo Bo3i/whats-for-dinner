@@ -16,6 +16,10 @@
 .ingredients{
   text-align: center;
 }
+.instructions{
+  text-align: left;
+  list-style: decimal;
+}
 input[type="text"] {
   margin-right: 1em;
   font-size: 1em;
