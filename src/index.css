@@ -14,7 +14,8 @@
   -webkit-text-size-adjust: 100%;
 }
 .ingredients{
-  text-align: center;
+  text-align: left;
+  list-style: circle;
 }
 .instructions{
   text-align: left;
@@ -28,6 +29,16 @@ input[type="text"] {
   border: 1px solid #646cff;
   transition: border-color 0.25s;
 }
+
+.col-rec{
+  display: flex;
+  flex-direction: column;
+  padding: 0 1em;
+  margin-top: 30px;
+}
+
+
+
 .col{
   display: flex;
   flex-direction: column;
@@ -36,7 +47,7 @@ input[type="text"] {
 .row{
   margin-top: 30px;
   padding: 0 1em;
-  justify-content: space-between;
+  justify-content: space-evenly;
   display: flex;
   flex-direction: row;
 }

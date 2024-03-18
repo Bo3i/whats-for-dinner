@@ -8,8 +8,8 @@ function RecipeCard({searchResults}) {
         <div>
             <h2>{searchResults.results[0].title || 'No title' }</h2>
             <p>Time to Cook : {searchResults.results[0].readyInMinutes}</p>
-            <div className="row">
-                <div className="col">
+            <div className="row-rec">
+                <div className="col-rec">
                 <p>Instructions</p>
                 <ul className="instructions">
                 {searchResults && searchResults.results[0].analyzedInstructions[0].steps.map((step, index) => (
@@ -17,7 +17,7 @@ function RecipeCard({searchResults}) {
                 ))}
                 </ul>
                  </div>
-                <div className="col">
+                <div className="col-rec">
                 <p>Ingredients</p>
                 <ul className="ingredients">
                     {searchResults.results[0].extendedIngredients.map((ingredient, index) => (
