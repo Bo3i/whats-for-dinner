@@ -16,6 +16,7 @@
 .ingredients{
   text-align: left;
   list-style: circle;
+
 }
 .instructions{
   text-align: left;
@@ -30,14 +31,58 @@ input[type="text"] {
   transition: border-color 0.25s;
 }
 
+h2{
+  font-size: 2em;
+  font-weight: bold;
+  line-height: 1.1;
+  margin-bottom: 0.5em;
+  color: #ffffff;
+
+}
+
+.title{
+  font-size: 1.5em;
+  font-weight: bold;
+  line-height: 1.1;
+  margin-bottom: 0.5em;
+  color: #ffffff;
+
+}
 .col-rec{
   display: flex;
   flex-direction: column;
   padding: 0 1em;
   margin-top: 30px;
+  margin-bottom: 15px;
+  
+}
+.recipe-card{
+  display: flex;
+  flex-direction: column;
+  padding: 0 1em;
+  margin-top: 30px;
+  border-radius: 10px;
+  background-color: #1a1a1a;
+  color: #ffffff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.25s;
+  cursor: pointer;
 }
 
+.d-img{
+  width: 60%;
+  height: 60%;
+  object-fit: cover;
+  border-radius: 15%;
+  margin-top: 30px;
+  justify-content: center;
+  align-items: center;
+  
+}
 
+.summary{
+  margin : 0 1em;
+}
 
 .col{
   display: flex;
@@ -45,7 +90,7 @@ input[type="text"] {
   padding: 0 1em;
 }
 .row{
-  margin-top: 30px;
+  margin-top: 1px;
   padding: 0 1em;
   justify-content: space-evenly;
   display: flex;

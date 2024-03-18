@@ -47,6 +47,7 @@ function SearchBar({setResponse}) {
 
                 try {
                     console.log('fetching data');
+                    console.log(options);
                     const response = await axios.request(options);
                     setResponse(response.data);
                     console.log(response.data);
@@ -67,20 +68,22 @@ function SearchBar({setResponse}) {
             <div className="col">
                 <p>Meal</p>
                 <ul>
-                    <li><input type="radio" name="meal" value="breakfast" onChange={e => setSelectedMeal(e.target.value)} /> Breakfast</li>
-                    <li><input type="radio" name="meal" value="main course" onChange={e => setSelectedMeal(e.target.value)}  /> Dinner</li>
-                    <li><input type="radio" name="meal"  value="soup" onChange={e => setSelectedMeal(e.target.value)}  /> Soup</li>
+                    <li><input type="radio" value="breakfast" onChange={e => setSelectedMeal(e.target.value)} /> Breakfast</li>
+                    <li><input type="radio" value="main course" onChange={e => setSelectedMeal(e.target.value)}  /> Dinner</li>
+                    <li><input type="radio"  value="dessert" onChange={e => setSelectedMeal(e.target.value)}  /> Dessert</li>
                 </ul>
             </div>
             <div className="col">
                 <p>Prepare time</p>
                  <ul>
-                    <li><input type="radio" name="time"  value="30" onChange={e => setSelectedTime(e.target.value)}  /> up to 30 min</li>
-                    <li><input type="radio" name="time"  value="60" onChange={e => setSelectedTime(e.target.value)}  /> up to 1h</li>
-                    <li><input type="radio" name="time"  value="120" onChange={e => setSelectedTime(e.target.value)}  /> 2h and longer</li>
+                    <li><input type="radio" value="30" onChange={e => setSelectedTime(e.target.value)}  /> up to 30 min</li>
+                    <li><input type="radio" value="60" onChange={e => setSelectedTime(e.target.value)}  /> up to 1h</li>
+                    <li><input type="radio" value="120" onChange={e => setSelectedTime(e.target.value)}  /> 2h and longer</li>
                 </ul>
             </div>
            
+           selectedMeal: {selectedMeal} <br />
+            selectedTime: {selectedTime}
         </div>
         <ul>
             
