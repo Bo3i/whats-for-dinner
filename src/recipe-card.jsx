@@ -30,9 +30,9 @@ function RecipeCard({searchResults}) {
                     <li key={index}>{step.step}</li>
                 ))}
                 </ul>
-                <p className='source'>Source: <a href={searchResults.results[0].sourceUrl} target="_blank" rel="noreferrer"> {searchResults.results[0].sourceName}</a></p>
                  </div>
         </div>
+        <p className='source'>Source: <a href={searchResults.results[0].sourceUrl} target="_blank" rel="noreferrer"> {searchResults.results[0].sourceName}</a></p>
         <h2>Enjoy your meal!</h2>
         </div>
     )

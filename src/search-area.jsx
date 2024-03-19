@@ -53,12 +53,8 @@ function SearchBar({setResponse}) {
                     if (inputValue === '') {
                         return;
                     }
-                    console.log('fetching data');
-                    console.log(options);
-                    console.log(inputValue, selectedMeal, selectedTime)
                     const response = await axios.request(options);
                     setResponse(response.data);
-                    console.log(response.data);
                 } catch (error) {
                     console.error(error);
             }
@@ -69,8 +65,12 @@ function SearchBar({setResponse}) {
     
 
     return (
-      <form>
-      <input type="text" value={inputValue} onChange={e => setInputValue(e.target.value)} placeholder="Main ingredient..." />
+      <form onSubmit={handleClick}>
+      <input type="text" value={inputValue} onChange={e => setInputValue(e.target.value)} onKeyDown={e => {if (e.key === 'Enter') {
+      e.preventDefault();
+      handleClick();
+    }
+  }} placeholder="Main ingredient..." />
       <button type="button" onClick={handleClick}>Search</button>
         <div className="row">
             <div className="col">
