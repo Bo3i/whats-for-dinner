@@ -32,6 +32,7 @@ function RecipeCard({searchResults}) {
                 </ul>
                  </div>
         </div>
+        <h2>Enjoy your meal!</h2>
         </div>
     )
 }

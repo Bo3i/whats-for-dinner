@@ -14,9 +14,6 @@ function App() {
         <h1>What's for dinner?</h1>
         <SearchBar setResponse={setResponse}  />
         <RecipeCard searchResults = {response}/>
-        <footer>
-            <p> Created by Jakub Kindlik s210871, Powered by Spoonacular</p>
-        </footer>
     </div>
   );
 }

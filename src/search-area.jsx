@@ -8,10 +8,14 @@ function SearchBar({setResponse}) {
     const [inputValue, setInputValue] = useState('');
     const [selectedMeal, setSelectedMeal] = useState('');
     const [selectedTime, setSelectedTime] = useState('');
-    const [clicked, setClicked] = useState(false);
+    const [clicked, setClicked] = useState('');
 
     const handleClick = () => {
-        setClicked(true);
+        if (inputValue === '') {
+            alert('Please enter the main ingredient');
+            return;
+        }
+        setClicked(clicked + 1);
     };
     const firstUpdate = useRef(true);
     useEffect(() => {
@@ -24,7 +28,7 @@ function SearchBar({setResponse}) {
                 method: 'GET',
                 url: 'https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/complexSearch',
                 params: {
-                    query: inputValue || 'chicken',
+                    query: inputValue,
                     type: selectedMeal || 'main course',
                     instructionsRequired: 'true',
                     fillIngredients: 'true',
@@ -46,8 +50,12 @@ function SearchBar({setResponse}) {
                 
 
                 try {
+                    if (inputValue === '') {
+                        return;
+                    }
                     console.log('fetching data');
                     console.log(options);
+                    console.log(inputValue, selectedMeal, selectedTime)
                     const response = await axios.request(options);
                     setResponse(response.data);
                     console.log(response.data);
@@ -63,27 +71,24 @@ function SearchBar({setResponse}) {
     return (
       <form>
       <input type="text" value={inputValue} onChange={e => setInputValue(e.target.value)} placeholder="Main ingredient..." />
-      <button type="submit" onClick={handleClick}>Search</button>
+      <button type="button" onClick={handleClick}>Search</button>
         <div className="row">
             <div className="col">
-                <p>Meal</p>
+                <p className='title'>Meal</p>
                 <ul>
-                    <li><input type="radio" value="breakfast" onChange={e => setSelectedMeal(e.target.value)} /> Breakfast</li>
-                    <li><input type="radio" value="main course" onChange={e => setSelectedMeal(e.target.value)}  /> Dinner</li>
-                    <li><input type="radio"  value="dessert" onChange={e => setSelectedMeal(e.target.value)}  /> Dessert</li>
+                    <li><input type="radio" name='meal' value="breakfast" onChange={e => setSelectedMeal(e.target.value)} /> Breakfast</li>
+                    <li><input type="radio" name='meal' value="main course" onChange={e => setSelectedMeal(e.target.value)}  /> Dinner</li>
+                    <li><input type="radio" name='meal' value="dessert" onChange={e => setSelectedMeal(e.target.value)}  /> Dessert</li>
                 </ul>
             </div>
             <div className="col">
-                <p>Prepare time</p>
+                <p className='title'>Prepare time</p>
                  <ul>
-                    <li><input type="radio" value="30" onChange={e => setSelectedTime(e.target.value)}  /> up to 30 min</li>
-                    <li><input type="radio" value="60" onChange={e => setSelectedTime(e.target.value)}  /> up to 1h</li>
-                    <li><input type="radio" value="120" onChange={e => setSelectedTime(e.target.value)}  /> 2h and longer</li>
+                    <li><input type="radio" name='time' value="30" onChange={e => setSelectedTime(e.target.value)}  /> up to 30 min</li>
+                    <li><input type="radio" name='time' value="60" onChange={e => setSelectedTime(e.target.value)}  /> up to 1h</li>
+                    <li><input type="radio" name='time' value="120" onChange={e => setSelectedTime(e.target.value)}  /> 2h and longer</li>
                 </ul>
             </div>
-           
-           selectedMeal: {selectedMeal} <br />
-            selectedTime: {selectedTime}
         </div>
         <ul>
             
