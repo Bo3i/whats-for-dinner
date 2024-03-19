@@ -7,7 +7,7 @@ function RecipeCard({searchResults}) {
   return (
         <div className='recipe-card'>
             <h2>{searchResults.results[0].title || 'No title' }</h2>
-            <p className='summary'>Time to Cook : {searchResults.results[0].readyInMinutes} | Servings: {searchResults.results[0].servings} | Calories per serving: {} </p>
+            <p className='summary'>{searchResults.results[0].readyInMinutes} min | {searchResults.results[0].servings} servings </p>
             <div className="row-rec">
                 
                 <div className='row'>
@@ -30,6 +30,7 @@ function RecipeCard({searchResults}) {
                     <li key={index}>{step.step}</li>
                 ))}
                 </ul>
+                <p className='source'>Source: <a href={searchResults.results[0].sourceUrl} target="_blank" rel="noreferrer"> {searchResults.results[0].sourceName}</a></p>
                  </div>
         </div>
         <h2>Enjoy your meal!</h2>
