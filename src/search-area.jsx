@@ -65,12 +65,13 @@ function SearchBar({setResponse}) {
     
 
     return (
-      <form onSubmit={handleClick}>
+      <form className='search-area' onSubmit={handleClick}>
+        <h1>What's for dinner?</h1>
       <input type="text" value={inputValue} onChange={e => setInputValue(e.target.value)} onKeyDown={e => {if (e.key === 'Enter') {
-      e.preventDefault();
-      handleClick();
-    }
-  }} placeholder="Main ingredient..." />
+            e.preventDefault();
+            handleClick();
+            }
+            }} placeholder="Main ingredient..." />
       <button type="button" onClick={handleClick}>Search</button>
         <div className="row">
             <div className="col">

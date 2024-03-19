@@ -11,7 +11,6 @@ function App() {
   
   return (
     <div>
-        <h1>What's for dinner?</h1>
         <SearchBar setResponse={setResponse}  />
         <RecipeCard searchResults = {response}/>
         <footer>Created by Jakub Kindlik</footer>
