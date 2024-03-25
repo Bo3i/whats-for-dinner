@@ -54,6 +54,10 @@ function SearchBar({setResponse}) {
                         return;
                     }
                     const response = await axios.request(options);
+                    if (response.data.results.length === 0) {
+                        alert('No recipes found. Please try again.');
+                        return;
+                    }
                     setResponse(response.data);
                 } catch (error) {
                     console.error(error);
