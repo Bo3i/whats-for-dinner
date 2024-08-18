@@ -1,12 +1,7 @@
-# What's For Dinner
-## Projekt stworzony przedmiotu "Aplikacje Internetowe"
-### Autor: Jakub Kindlik s210817
+Project Description
+The project is a web application that presents the user with a random recipe based on the main ingredient, preparation time, and type of meal. The application uses the external Spoonacular API, which contains culinary recipes.
 
-## Opis projektu
-Projekt to aplikacja webowa, która prezentuje uzytkownikowi losowy przepis, na podstawie głównego składnika, czasu wykonania oraz rodzaju posiłku. Aplikacja korzysta z zewnętrznego API [Spoonacular](https://rapidapi.com/spoonacular/api/recipe-food-nutrition), które zawiera przepisy kulinarne. 
+Technologies
+The project was developed using the React.js framework, with Vite.js as the bundler and Axios for communication with the API.
 
-## Technologie
-Projekt powstał we frameworku React.js z wykorzystaniem Vite.js jako bundlera oraz Axios do komunikacji z API.
-
-## Aplikację przetestowac można pod linkiem: [What's For Dinner](https://whats-for-dinner.fun/)
-
+You can test the application at the following link: [What's For Dinner](https://whats-for-dinner.fun/)
